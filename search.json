@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html",
+    "href": "weeks/W11_robust-communication/homework/homework.html",
+    "title": "Homework: Display Interfacing",
+    "section": "",
+    "text": "In this homework, you will build a small display dashboard using the provided device drivers.\nThe system uses:\n\nMPU6050 IMU over I2C\nHD44780 16x2 character LCD with an I2C backpack\nST7789 TFT display over SPI\n\nThe goal is not to write a full display library. The goal is to understand how simple display drivers are connected to an embedded application.\n\n\n\n\n\n\nNote\n\n\n\nDisplay modules can be borrowed from the laboratory. Use the provided drivers as your starting point."
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#part-1-cubemx-configuration",
+    "href": "weeks/W11_robust-communication/homework/homework.html#part-1-cubemx-configuration",
+    "title": "Homework: Display Interfacing",
+    "section": "5.1 Part 1: CubeMX Configuration",
+    "text": "5.1 Part 1: CubeMX Configuration\nCreate a CubeIDE project for NUCLEO-F401RE.\nConfigure:\n\n\n\nPeripheral\nRequired setting\n\n\n\n\nI2C1\nPB8 = SCL, PB9 = SDA, 100 kHz, 7-bit addressing\n\n\nSPI1\nMaster transmit, 8-bit, CPOL low, CPHA 1 edge\n\n\nUSART2\n115200 baud, 8N1\n\n\nPA8\nGPIO output, label TFT_RST\n\n\nPA9\nGPIO output, label TFT_DC\n\n\nPA10\nGPIO output, label TRACE\n\n\n\nIf the project reports linker errors for atan2f() or sqrtf(), add the math library:\nProject Properties -&gt; C/C++ Build -&gt; Settings -&gt; MCU GCC Linker -&gt; Libraries -&gt; add m"
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#part-2-add-the-provided-code",
+    "href": "weeks/W11_robust-communication/homework/homework.html#part-2-add-the-provided-code",
+    "title": "Homework: Display Interfacing",
+    "section": "5.2 Part 2: Add the Provided Code",
+    "text": "5.2 Part 2: Add the Provided Code\nCopy these folders into your CubeIDE project root:\napp/\ndrivers/\nbsp/\nAdd include paths if needed:\napp\ndrivers\nbsp\nModify main.c only inside user-code sections.\nAdd:\n/* USER CODE BEGIN Includes */\n#include \"app.h\"\n/* USER CODE END Includes */\nCall the app after CubeMX initialization:\n/* USER CODE BEGIN 2 */\napp_main();\n/* USER CODE END 2 */\napp_main() does not return, so the CubeMX while (1) can remain empty."
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#part-3-required-display-behavior",
+    "href": "weeks/W11_robust-communication/homework/homework.html#part-3-required-display-behavior",
+    "title": "Homework: Display Interfacing",
+    "section": "5.3 Part 3: Required Display Behavior",
+    "text": "5.3 Part 3: Required Display Behavior\nStart from the provided app/app.c, then make these changes:\n\nOn the character LCD, show:\n\nline 1: your name or group number\nline 2: current roll or pitch angle\n\nOn the TFT, show:\n\na center reference mark or cross\na shape whose position changes when the board is tilted\n\nChange the TFT shape color when the absolute tilt angle becomes large.\n\nExample behavior:\nSmall tilt:   yellow square\nLarge tilt:   red square\nKeep the code simple. You may use rectangles only; you do not need fonts, images, sprites, or DMA."
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#part-4-short-code-explanation",
+    "href": "weeks/W11_robust-communication/homework/homework.html#part-4-short-code-explanation",
+    "title": "Homework: Display Interfacing",
+    "section": "5.4 Part 4: Short Code Explanation",
+    "text": "5.4 Part 4: Short Code Explanation\nAnswer these questions in your report:\n\nWhat does BSP_I2C_LCD_IMU represent?\nWhy can the MPU6050 and LCD backpack share the same I2C bus?\nWhy does the HD44780 LCD receive each byte as two nibbles?\nWhat does st7789_fill_rect(x, y, w, h, color) do?\nWhy are we not using DMA in this homework?"
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#measurement-1-i2c-bus-check",
+    "href": "weeks/W11_robust-communication/homework/homework.html#measurement-1-i2c-bus-check",
+    "title": "Homework: Display Interfacing",
+    "section": "6.1 Measurement 1: I2C Bus Check",
+    "text": "6.1 Measurement 1: I2C Bus Check\nInstrument: DMM and serial terminal.\nRecord:\n\n\n\nItem\nMeasured / observed value\n\n\n\n\nSDA idle voltage\n\n\n\nSCL idle voltage\n\n\n\nMPU6050 address found\n\n\n\nLCD backpack address found\n\n\n\n\nExpected:\n\nSDA and SCL idle near the I2C pull-up voltage: about 3.3 V for a 3.3 V backpack setup, or about 5 V when the LCD backpack is powered from the Nucleo 5V pin on Nucleo-F401RE PB8/PB9.\nMPU6050 appears at 0x68.\nLCD backpack appears at 0x27 or 0x3F."
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#measurement-2-tft-redraw-timing",
+    "href": "weeks/W11_robust-communication/homework/homework.html#measurement-2-tft-redraw-timing",
+    "title": "Homework: Display Interfacing",
+    "section": "6.2 Measurement 2: TFT Redraw Timing",
+    "text": "6.2 Measurement 2: TFT Redraw Timing\nInstrument: oscilloscope on PA10 / TRACE.\nRecord:\n\n\n\nItem\nValue\n\n\n\n\nTRACE high time for one redraw\n\n\n\nRedraw period\n\n\n\n\nThe starter code sets TRACE high during TFT drawing and low after drawing."
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#wrong-lcd-address-test",
+    "href": "weeks/W11_robust-communication/homework/homework.html#wrong-lcd-address-test",
+    "title": "Homework: Display Interfacing",
+    "section": "7.1 Wrong LCD Address Test",
+    "text": "7.1 Wrong LCD Address Test\nTemporarily change:\n#define LCD_ADDR LCD_I2C_ADDR_27\nto:\n#define LCD_ADDR LCD_I2C_ADDR_3F\nor reverse it, depending on your actual module.\nRecord:\n\nWhat happened on the character LCD?\nWhat did the UART log show?\nHow did you restore correct operation?"
+  },
+  {
+    "objectID": "weeks/W11_robust-communication/homework/homework.html#measurement-3-i2c-communication-capture",
+    "href": "weeks/W11_robust-communication/homework/homework.html#measurement-3-i2c-communication-capture",
+    "title": "Homework: Display Interfacing",
+    "section": "6.3 Measurement 3: I2C Communication Capture",
+    "text": "6.3 Measurement 3: I2C Communication Capture\nInstrument: logic analyzer.\nConnect:\n\n\n\nLogic analyzer channel\nSignal\n\n\n\n\nCH0\nSCL / PB8\n\n\nCH1\nSDA / PB9\n\n\nGND\nNucleo GND\n\n\n\nCapture at least one I2C transaction after reset. Use the I2C decoder in the logic analyzer software.\nRecord:\n\n\n\nItem\nObserved value\n\n\n\n\nCaptured address 1\n\n\n\nCaptured address 2\n\n\n\nACK/NACK visible?\n\n\n\nApproximate SCL frequency\n\n\n\n\nExpected:\n\nYou should see traffic to the MPU6050 address 0x68.\nYou should see traffic to the LCD backpack address 0x27 or 0x3F.\nThe decoder should show ACKs for the connected devices."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html",
+    "href": "exams/homework/W11_display_interfacing/homework.html",
+    "title": "Homework: Display Interfacing",
+    "section": "",
+    "text": "In this homework, you will build a small display dashboard using the provided device drivers.\nThe system uses:\n\nMPU6050 IMU over I2C\nHD44780 16x2 character LCD with an I2C backpack\nST7789 TFT display over SPI\n\nThe goal is not to write a full display library. The goal is to understand how simple display drivers are connected to an embedded application.\n\n\n\n\n\n\nNote\n\n\n\nDisplay modules can be borrowed from the laboratory. Use the provided drivers as your starting point."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#part-1-cubemx-configuration",
+    "href": "exams/homework/W11_display_interfacing/homework.html#part-1-cubemx-configuration",
+    "title": "Homework: Display Interfacing",
+    "section": "5.1 Part 1: CubeMX Configuration",
+    "text": "5.1 Part 1: CubeMX Configuration\nCreate a CubeIDE project for NUCLEO-F401RE.\nConfigure:\n\n\n\nPeripheral\nRequired setting\n\n\n\n\nI2C1\nPB8 = SCL, PB9 = SDA, 100 kHz, 7-bit addressing\n\n\nSPI1\nMaster transmit, 8-bit, CPOL low, CPHA 1 edge\n\n\nUSART2\n115200 baud, 8N1\n\n\nPA8\nGPIO output, label TFT_RST\n\n\nPA9\nGPIO output, label TFT_DC\n\n\nPA10\nGPIO output, label TRACE\n\n\n\nIf the project reports linker errors for atan2f() or sqrtf(), add the math library:\nProject Properties -&gt; C/C++ Build -&gt; Settings -&gt; MCU GCC Linker -&gt; Libraries -&gt; add m"
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#part-2-add-the-provided-code",
+    "href": "exams/homework/W11_display_interfacing/homework.html#part-2-add-the-provided-code",
+    "title": "Homework: Display Interfacing",
+    "section": "5.2 Part 2: Add the Provided Code",
+    "text": "5.2 Part 2: Add the Provided Code\nCopy these folders into your CubeIDE project root:\napp/\ndrivers/\nbsp/\nAdd include paths if needed:\napp\ndrivers\nbsp\nModify main.c only inside user-code sections.\nAdd:\n/* USER CODE BEGIN Includes */\n#include \"app.h\"\n/* USER CODE END Includes */\nCall the app after CubeMX initialization:\n/* USER CODE BEGIN 2 */\napp_main();\n/* USER CODE END 2 */\napp_main() does not return, so the CubeMX while (1) can remain empty."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#part-3-required-display-behavior",
+    "href": "exams/homework/W11_display_interfacing/homework.html#part-3-required-display-behavior",
+    "title": "Homework: Display Interfacing",
+    "section": "5.3 Part 3: Required Display Behavior",
+    "text": "5.3 Part 3: Required Display Behavior\nStart from the provided app/app.c, then make these changes:\n\nOn the character LCD, show:\n\nline 1: your name or group number\nline 2: current roll or pitch angle\n\nOn the TFT, show:\n\na center reference mark or cross\na shape whose position changes when the board is tilted\n\nChange the TFT shape color when the absolute tilt angle becomes large.\n\nExample behavior:\nSmall tilt:   yellow square\nLarge tilt:   red square\nKeep the code simple. You may use rectangles only; you do not need fonts, images, sprites, or DMA."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#part-4-short-code-explanation",
+    "href": "exams/homework/W11_display_interfacing/homework.html#part-4-short-code-explanation",
+    "title": "Homework: Display Interfacing",
+    "section": "5.4 Part 4: Short Code Explanation",
+    "text": "5.4 Part 4: Short Code Explanation\nAnswer these questions in your report:\n\nWhat does BSP_I2C_LCD_IMU represent?\nWhy can the MPU6050 and LCD backpack share the same I2C bus?\nWhy does the HD44780 LCD receive each byte as two nibbles?\nWhat does st7789_fill_rect(x, y, w, h, color) do?\nWhy are we not using DMA in this homework?"
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#measurement-1-i2c-bus-check",
+    "href": "exams/homework/W11_display_interfacing/homework.html#measurement-1-i2c-bus-check",
+    "title": "Homework: Display Interfacing",
+    "section": "6.1 Measurement 1: I2C Bus Check",
+    "text": "6.1 Measurement 1: I2C Bus Check\nInstrument: DMM and serial terminal.\nRecord:\n\n\n\nItem\nMeasured / observed value\n\n\n\n\nSDA idle voltage\n\n\n\nSCL idle voltage\n\n\n\nMPU6050 address found\n\n\n\nLCD backpack address found\n\n\n\n\nExpected:\n\nSDA and SCL idle near the I2C pull-up voltage: about 3.3 V for a 3.3 V backpack setup, or about 5 V when the LCD backpack is powered from the Nucleo 5V pin on Nucleo-F401RE PB8/PB9.\nMPU6050 appears at 0x68.\nLCD backpack appears at 0x27 or 0x3F."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#measurement-2-tft-redraw-timing",
+    "href": "exams/homework/W11_display_interfacing/homework.html#measurement-2-tft-redraw-timing",
+    "title": "Homework: Display Interfacing",
+    "section": "6.2 Measurement 2: TFT Redraw Timing",
+    "text": "6.2 Measurement 2: TFT Redraw Timing\nInstrument: oscilloscope on PA10 / TRACE.\nRecord:\n\n\n\nItem\nValue\n\n\n\n\nTRACE high time for one redraw\n\n\n\nRedraw period\n\n\n\n\nThe starter code sets TRACE high during TFT drawing and low after drawing."
+  },
+  {
+    "objectID": "exams/homework/W11_display_interfacing/homework.html#measurement-3-i2c-communication-capture",
+    "href": "exams/homework/W11_display_interfacing/homework.html#measurement-3-i2c-communication-capture",
+    "title": "Homework: Display Interfacing",
+    "section": "6.3 Measurement 3: I2C Communication Capture",
+    "text": "6.3 Measurement 3: I2C Communication Capture\nInstrument: logic analyzer.\nConnect:\n\n\n\nLogic analyzer channel\nSignal\n\n\n\n\nCH0\nSCL / PB8\n\n\nCH1\nSDA / PB9\n\n\nGND\nNucleo GND\n\n\n\nCapture at least one I2C transaction after reset. Use the I2C decoder in the logic analyzer software.\nRecord:\n\n\n\nItem\nObserved value\n\n\n\n\nCaptured address 1\n\n\n\nCaptured address 2\n\n\n\nACK/NACK visible?\n\n\n\nApproximate SCL frequency\n\n\n\n\nExpected:\n\nYou should see traffic to the MPU6050 address 0x68.\nYou should see traffic to the LCD backpack address 0x27 or 0x3F.\nThe decoder should show ACKs for the connected devices."
+  }
+]
