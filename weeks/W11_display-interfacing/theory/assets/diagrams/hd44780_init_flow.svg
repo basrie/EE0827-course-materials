@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">HD44780 I2C backpack power-on initialization flow</title>
+  <desc id="desc">Flowchart showing the required HD44780 4-bit power-on initialization sequence when using an I2C backpack.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1c5b84"/>
+    </marker>
+    <style>
+      .box { fill: #eef6fb; stroke: #1c5b84; stroke-width: 3; rx: 14; }
+      .sync { fill: #fff8e1; stroke: #b26a00; stroke-width: 3; rx: 14; }
+      .mode { fill: #edf7ed; stroke: #2e7d32; stroke-width: 3; rx: 14; }
+      .done { fill: #fff1f1; stroke: #c62828; stroke-width: 3; rx: 14; }
+      .label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 25px; fill: #18384f; }
+      .small { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; fill: #18384f; }
+      .arrow { stroke: #1c5b84; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="box" x="230" y="22" width="500" height="64"/>
+  <text class="label" x="480" y="62" text-anchor="middle">power reaches valid VDD</text>
+
+  <path class="arrow" d="M480 90 V122"/>
+  <rect class="box" x="230" y="126" width="500" height="64"/>
+  <text class="label" x="480" y="166" text-anchor="middle">wait more than 15 ms</text>
+
+  <path class="arrow" d="M480 194 V226"/>
+  <rect class="sync" x="170" y="230" width="620" height="84"/>
+  <text class="label" x="480" y="264" text-anchor="middle">send 0x30 three times</text>
+  <text class="small" x="480" y="294" text-anchor="middle">force known 8-bit startup state</text>
+
+  <path class="arrow" d="M480 318 V350"/>
+  <rect class="mode" x="230" y="354" width="500" height="64"/>
+  <text class="label" x="480" y="394" text-anchor="middle">send 0x20 via backpack</text>
+  <text class="small" x="480" y="416" text-anchor="middle">switch interface to 4-bit mode</text>
+
+  <path class="arrow" d="M480 422 V454"/>
+  <rect class="mode" x="170" y="458" width="620" height="84"/>
+  <text class="label" x="480" y="492" text-anchor="middle">configure display function</text>
+  <text class="small" x="480" y="522" text-anchor="middle">0x28: 4-bit, 2 lines, 5x8 dots</text>
+
+  <path class="arrow" d="M480 546 V578"/>
+  <rect class="box" x="170" y="582" width="620" height="84"/>
+  <text class="label" x="480" y="616" text-anchor="middle">clear display and set entry mode</text>
+  <text class="small" x="480" y="646" text-anchor="middle">0x01 wait 2 ms, then 0x06</text>
+
+  <path class="arrow" d="M480 670 V702"/>
+  <rect class="done" x="230" y="706" width="500" height="44"/>
+  <text class="label" x="480" y="736" text-anchor="middle">display ON: 0x0C</text>
+</svg>

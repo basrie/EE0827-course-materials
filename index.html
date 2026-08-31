@@ -1,176 +1,116 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="robots" content="noindex,nofollow,noarchive">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
   <title>EE0827 Course Materials</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f8fb;
-      --panel: #ffffff;
-      --text: #17202a;
-      --muted: #5d6978;
-      --line: #d9dee7;
-      --accent: #0f766e;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-    }
-
-    header {
-      background: #17202a;
-      color: #fff;
-      padding: 32px 20px 28px;
-    }
-
-    main {
-      padding: 24px 20px 40px;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
-      letter-spacing: 0;
-    }
-
-    .term {
-      margin: 0;
-      color: #d4dde8;
-    }
-
-    .notice {
-      background: #eef8f6;
-      border: 1px solid #b8ddd7;
-      border-radius: 8px;
-      color: #124d48;
-      margin-bottom: 20px;
-      padding: 14px 16px;
-    }
-
-    .weeks {
-      display: grid;
-      gap: 14px;
-    }
-
-    .week {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
-    }
-
-    a.item {
-      display: flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 10px 12px;
-      color: inherit;
-      text-decoration: none;
-      background: #fff;
-    }
-
-    a.item:hover,
-    a.item:focus-visible {
-      border-color: var(--accent);
-      outline: none;
-    }
-
-    .kind {
-      flex: 0 0 auto;
-      border-radius: 999px;
-      background: #edf0f5;
-      color: var(--muted);
-      font-size: 0.78rem;
-      padding: 2px 8px;
-    }
+    body { margin:0; font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+           background:#f7f8fb; color:#17202a; }
+    header { background:#17202a; color:#fff; padding:28px 20px; }
+    header p { margin:6px 0 0; color:#c7d0da; }
+    main { max-width:960px; margin:0 auto; padding:24px 20px 48px; }
+    section { background:#fff; border:1px solid #d9dee7; border-radius:12px;
+              padding:16px 20px; margin-bottom:14px; }
+    h1 { margin:0; font-size:24px; }
+    h2 { margin:0 0 10px; font-size:16px; color:#0f766e; }
+    ul { margin:0; padding-left:20px; }
+    li { margin:5px 0; }
+    a { color:#0f766e; }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap">
-      <h1>EE0827 Course Materials</h1>
-      <p class="term">Embedded Systems, 2025-2026</p>
-    </div>
+    <h1>EE0827 Course Materials</h1>
+    <p>Embedded System Applications &middot; 2025-2026</p>
   </header>
-  <main class="wrap">
-    <p class="notice">Student-facing rendered course materials. Please access this page through CATS.</p>
-    <section class="weeks" aria-label="Weekly course materials">
-      <article class="week">
-        <h2>Week 1: Baseline Measurement</h2>
-        <div class="links">
-          <a class="item" href="W01_baseline-measurement/W01_baseline-measurement_slides.html"><span>Slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W01_baseline-measurement/W01_baseline-measurement_slides_chalkboard.html"><span>Slides with chalkboard</span><span class="kind">HTML</span></a>
-          <a class="item" href="W01_baseline-measurement/W01_baseline-measurement_lab.pdf"><span>Lab</span><span class="kind">PDF</span></a>
-          <a class="item" href="W01_baseline-measurement/W01_baseline-measurement_notes.pdf"><span>Notes</span><span class="kind">PDF</span></a>
-        </div>
-      </article>
-      <article class="week">
-        <h2>Week 2: Power Input and Regulation</h2>
-        <div class="links">
-          <a class="item" href="W02_power-input-regulation/W02_power-input-regulation_slides.html"><span>Slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W02_power-input-regulation/W02_power-input-regulation_lab.pdf"><span>Lab</span><span class="kind">PDF</span></a>
-          <a class="item" href="W02_power-input-regulation/W02_power-input-regulation_notes.pdf"><span>Notes</span><span class="kind">PDF</span></a>
-        </div>
-      </article>
-      <article class="week">
-        <h2>Week 3: Signal Conditioning and Protection</h2>
-        <div class="links">
-          <a class="item" href="W03_signal-conditioning-protection/W03_signal-conditioning-protection_slides.html"><span>Slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W03_signal-conditioning-protection/W03_signal-conditioning-protection_lab.pdf"><span>Lab</span><span class="kind">PDF</span></a>
-          <a class="item" href="W03_signal-conditioning-protection/W03_signal-conditioning-protection_notes.pdf"><span>Notes</span><span class="kind">PDF</span></a>
-        </div>
-      </article>
-      <article class="week">
-        <h2>Week 4: Motor Control and H-Bridge</h2>
-        <div class="links">
-          <a class="item" href="W04_motor-control-hbridge/W04_motor-control-hbridge_slides.html"><span>Slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W04_motor-control-hbridge/W04_motor-control-hbridge_lab.pdf"><span>Lab</span><span class="kind">PDF</span></a>
-          <a class="item" href="W04_motor-control-hbridge/W04_motor-control-hbridge_notes.pdf"><span>Notes</span><span class="kind">PDF</span></a>
-        </div>
-      </article>
-      <article class="week">
-        <h2>Week 5: Sensors and ADC Applications</h2>
-        <div class="links">
-          <a class="item" href="W05_sensors-adc-applications/W05_sensors-adc-applications_slides.html"><span>Slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W05_sensors-adc-applications/W05_sensors-adc-applications_lab.pdf"><span>Lab</span><span class="kind">PDF</span></a>
-          <a class="item" href="W05_sensors-adc-applications/W05_sensors-adc-applications_lab_slides.html"><span>Lab slides</span><span class="kind">HTML</span></a>
-          <a class="item" href="W05_sensors-adc-applications/W05_sensors-adc-applications_notes.pdf"><span>Notes</span><span class="kind">PDF</span></a>
-        </div>
-      </article>
-    </section>
+  <main>
+      <section>
+        <h2>Weeks</h2>
+        <ul>
+        <li><a href="weeks/W01_baseline-measurement/assets/docs/c_fundamentals_study_sheet.pdf">c fundamentals study sheet</a></li>
+        <li><a href="weeks/W01_baseline-measurement/assets/docs/study_sheet.pdf">study sheet</a></li>
+        <li><a href="weeks/W01_baseline-measurement/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W01_baseline-measurement/theory/notes.html">notes</a></li>
+        <li><a href="weeks/W01_baseline-measurement/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W01_baseline-measurement/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W02_power-input-regulation/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W02_power-input-regulation/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W02_power-input-regulation/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W03_signal-conditioning-protection/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W03_signal-conditioning-protection/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W03_signal-conditioning-protection/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W04_motor-control-hbridge/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W04_motor-control-hbridge/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W04_motor-control-hbridge/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W05_sensors-adc-applications/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W05_sensors-adc-applications/lab/lab_slides.html">lab slides</a></li>
+        <li><a href="weeks/W05_sensors-adc-applications/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W05_sensors-adc-applications/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W06_rtos-foundations/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W06_rtos-foundations/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W06_rtos-foundations/theory/review_slides.html">review slides</a></li>
+        <li><a href="weeks/W06_rtos-foundations/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W07_rtos-communication/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W07_rtos-communication/lab/lab_slides.html">lab slides</a></li>
+        <li><a href="weeks/W07_rtos-communication/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W07_rtos-communication/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W08_communication-protocols-i2c-spi/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W08_communication-protocols-i2c-spi/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W08_i2c-protocol-imu/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W08_i2c-protocol-imu/lab/lab_slides.html">lab slides</a></li>
+        <li><a href="weeks/W08_i2c-protocol-imu/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W08_i2c-protocol-imu/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W09_i2c-dma-imu/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W09_i2c-dma-imu/lab/lab_slides.html">lab slides</a></li>
+        <li><a href="weeks/W09_i2c-dma-imu/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W09_i2c-dma-imu/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W09_midterm-practical/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W09_midterm-practical/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W09_midterm-practical/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W10_dma-efficient-io/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W10_dma-efficient-io/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W10_spi-protocol-dma/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W10_spi-protocol-dma/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W10_spi-protocol-dma/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W11_display-interfacing/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W11_display-interfacing/theory/notes.pdf">notes</a></li>
+        <li><a href="weeks/W11_display-interfacing/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W12_system-reliability-watchdog/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W12_system-reliability-watchdog/theory/slides.html">slides</a></li>
+        <li><a href="weeks/W13_debugging-evidence-jitter/lab/lab.pdf">lab</a></li>
+        <li><a href="weeks/W13_debugging-evidence-jitter/theory/slides.html">slides</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Resources</h2>
+        <ul>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W02_circuit_2_1_ams1117_regulator.pdf">W02 circuit 2 1 ams1117 regulator</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W02_circuit_2_1_lm317t_regulator.pdf">W02 circuit 2 1 lm317t regulator</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W02_circuit_2_2_mcu_decoupling.pdf">W02 circuit 2 2 mcu decoupling</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W02_circuit_2_3_decoupling_poor.pdf">W02 circuit 2 3 decoupling poor</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W02_circuit_2_4_decoupling_good.pdf">W02 circuit 2 4 decoupling good</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_1_voltage_divider.pdf">W03 circuit 3 1 voltage divider</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_1b_divider_loaded.pdf">W03 circuit 3 1b divider loaded</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_2_divider_rc_filter.pdf">W03 circuit 3 2 divider rc filter</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_3_gpio_protection.pdf">W03 circuit 3 3 gpio protection</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_4_level_shifter_divider.pdf">W03 circuit 3 4 level shifter divider</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W03_circuit_3_5_protected_analog_input.pdf">W03 circuit 3 5 protected analog input</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_circuit_4_0_motor_equivalent.pdf">W04 circuit 4 0 motor equivalent</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_circuit_4_1_lowside_mosfet.pdf">W04 circuit 4 1 lowside mosfet</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_circuit_4_2_lowside_flyback.pdf">W04 circuit 4 2 lowside flyback</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_circuit_4_4_current_sense.pdf">W04 circuit 4 4 current sense</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_hbridge_brake.pdf">W04 hbridge brake</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_hbridge_forward.pdf">W04 hbridge forward</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_hbridge_reverse.pdf">W04 hbridge reverse</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W04_shootthrough.pdf">W04 shootthrough</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W05_circuit_ldr_adc_interface.pdf">W05 circuit ldr adc interface</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W05_circuit_lm35_adc_interface.pdf">W05 circuit lm35 adc interface</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W05_circuit_lm741_thermocouple_amp.pdf">W05 circuit lm741 thermocouple amp</a></li>
+        <li><a href="resources/parts_kits/latex_circuit_graphics/rendered/W05_circuit_thermocouple_amplifier_adc.pdf">W05 circuit thermocouple amplifier adc</a></li>
+        </ul>
+      </section>
   </main>
 </body>
 </html>
